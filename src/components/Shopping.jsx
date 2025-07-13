@@ -1,21 +1,20 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { ShopContext } from "../App";
 
 function Shopping() {
-    const [data, set_data] = useState(null);
-    const [cart_total, set_cart_total] = useState(0);
+    const {products, set_products, cart_total, set_cart_total} = useContext(ShopContext)
     useEffect(() => {
         async function fetch_data() {
             const response = await fetch('https://fakestoreapi.com/products');
-            set_data(await response.json())
+            set_products(await response.json())
         }
         fetch_data();
     }, [])
-    console.log(data)
     return (
         <>
             <h1>Shopping Page</h1>
             <div className="cart">Cart: {cart_total.toFixed(2)}</div>
-            <div className="cards">{data && data.map(item => <Card key={item.id} item={item} set_cart_total={set_cart_total}/>)}</div>
+            <div className="cards">{products && products.map(item => <Card key={item.id} item={item} set_cart_total={set_cart_total}/>)}</div>
         </>)
 }
 
