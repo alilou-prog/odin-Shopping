@@ -1,23 +1,29 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 function Shopping() {
+    const [data, set_data] = useState(null);
+    useEffect(() => {
+        async function fetch_data() {
+            const response = await fetch('https://fakestoreapi.com/products');
+            set_data(await response.json())
+        }
+        fetch_data();
+    }, [])
+    console.log(data)
     return (
         <>
             <h1>Shopping Page</h1>
             <div className="cart">Cart</div>
-            <Card />
+            {data && data.map(item => <Card key={item.id} item={item} />)}
         </>)
 }
 
-function Card({ item_fake }) {
+function Card({ item }) {
     const [count, setCount] = useState(0)
-    const item = {
-        price: 100
-    }
     return (
         <>
             <div className="card">
-                <img src={null} alt='card img'></img>
+                <img src={item.image} alt='card img'></img>
                 <div className='control'>
                     <div className="total">total: {count * item.price}</div>
                     <div className="count">{count}</div>
