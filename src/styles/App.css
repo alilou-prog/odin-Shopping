@@ -27,6 +27,21 @@
     gap: 8px;
 }
 
+.card > .control > .count {
+    border: 1px solid grey;
+    margin-left: auto;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card > .control > .total {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .card > .control > .btns {
     display: flex;
     flex-direction: column;
