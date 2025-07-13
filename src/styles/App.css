@@ -9,16 +9,22 @@
     justify-content: flex-end;
 }
 
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px;
+    gap: 32px;
+}
+
 .card {
     display: flex;
     flex-direction: column;
-    width: 350px;
+    width: 300px;
 }
 
 .card > img {
     border: 1px solid black;
     height: 200px;
-    width: 300px;
 }
 
 .card > .control {

@@ -14,7 +14,7 @@ function Shopping() {
         <>
             <h1>Shopping Page</h1>
             <div className="cart">Cart</div>
-            {data && data.map(item => <Card key={item.id} item={item} />)}
+            <div className="cards">{data && data.map(item => <Card key={item.id} item={item} />)}</div>
         </>)
 }
 
@@ -25,7 +25,7 @@ function Card({ item }) {
             <div className="card">
                 <img src={item.image} alt='card img'></img>
                 <div className='control'>
-                    <div className="total">total: {count * item.price}</div>
+                    <div className="total">total: {(count * item.price).toFixed(2)}</div>
                     <div className="count">{count}</div>
                     <div className="btns">
                         <button className="inc" onClick={() => setCount(prev => prev + 1)}>inc</button>
